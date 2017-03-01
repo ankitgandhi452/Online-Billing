@@ -32,6 +32,14 @@ export default (
       }}
     />
     <Route
+      path="/contacts"
+      getComponent={(nextState, cb) => {
+        require.ensure([], require => {
+          cb(null, require('./modules/Contact/pages/ContactListPage.jsx').default);
+        });
+      }}
+    />
+    <Route
       path="/posts/:slug-:cuid"
       getComponent={(nextState, cb) => {
         require.ensure([], require => {
